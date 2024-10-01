@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">MortgageCalculator</string>
+    <string-array name="payment_options">
+        <item>Monthly</item>
+        <item>Bi-Monthly</item>
+        <item>Weekly</item>
+        <item>Bi-Weekly</item>
+    </string-array>
 </resources>

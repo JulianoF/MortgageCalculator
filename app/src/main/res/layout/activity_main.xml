@@ -7,13 +7,173 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/mainLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#A5CFD0">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/topToolBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#68BFBF"
+            android:minHeight="?attr/actionBarSize"
+            android:theme="?attr/actionBarTheme"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/principleText"
+            android:layout_width="72sp"
+            android:layout_height="61dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="30dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="Principle"
+            app:layout_constraintEnd_toStartOf="@+id/principleInput"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/topToolBar" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/principleInput"
+            android:layout_width="300sp"
+            android:layout_height="62dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/principleText"
+            app:layout_constraintTop_toBottomOf="@+id/topToolBar">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Enter Amount" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/intrestText"
+            android:layout_width="72sp"
+            android:layout_height="61dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="32dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="Intrest Rate"
+            app:layout_constraintEnd_toStartOf="@+id/intrestInput"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/principleText" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/intrestInput"
+            android:layout_width="300sp"
+            android:layout_height="62sp"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/intrestText"
+            app:layout_constraintTop_toBottomOf="@+id/principleInput">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="Enter Intrest Rate" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/amortizationText"
+            android:layout_width="80sp"
+            android:layout_height="61dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="30dp"
+            android:layout_weight="1"
+            android:fontFamily="sans-serif-condensed"
+            android:gravity="center"
+            android:text="Amoritization Period"
+            app:layout_constraintEnd_toStartOf="@+id/amorInput"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/intrestText" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/amorInput"
+            android:layout_width="298sp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="17dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/amortizationText"
+            app:layout_constraintTop_toBottomOf="@+id/intrestInput">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Enter Amoritization Period" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/paymentText"
+            android:layout_width="80sp"
+            android:layout_height="61dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="30dp"
+            android:layout_weight="1"
+            android:fontFamily="sans-serif-condensed"
+            android:gravity="center"
+            android:text="Payment Frequency"
+            app:layout_constraintEnd_toStartOf="@+id/paymentSpinner"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/amortizationText" />
+
+        <Spinner
+            android:id="@+id/paymentSpinner"
+            android:layout_width="298dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:layout_marginEnd="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/paymentText"
+            app:layout_constraintTop_toBottomOf="@+id/amorInput" />
+
+        <Button
+            android:id="@+id/calcButton"
+            android:layout_width="233dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="40dp"
+            android:text="Calcuate Payments"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/paymentSpinner" />
+
+        <TextView
+            android:id="@+id/infoText"
+            android:layout_width="205dp"
+            android:layout_height="58dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="100dp"
+            android:layout_marginEnd="2dp"
+            android:gravity="center"
+            android:text="Monthly Payment:"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toStartOf="@+id/resultText"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/calcButton" />
+
+        <TextView
+            android:id="@+id/resultText"
+            android:layout_width="172dp"
+            android:layout_height="56dp"
+            android:layout_marginStart="3dp"
+            android:layout_marginTop="102dp"
+            android:gravity="center"
+            android:text="$0.00"
+            android:textAlignment="textStart"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/infoText"
+            app:layout_constraintTop_toBottomOf="@+id/calcButton" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
