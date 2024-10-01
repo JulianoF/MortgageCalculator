@@ -5,6 +5,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Spinner;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.Toast;
 
 import androidx.appcompat.widget.Toolbar;
@@ -14,10 +15,16 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.google.android.material.textfield.TextInputEditText;
+
 public class MainActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     Toolbar topToolBar;
     Spinner spinner;
+    Button calcButton;
+    TextInputEditText principleInput;
+    TextInputEditText intrestInput;
+    TextInputEditText amorInput;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +40,10 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         setSupportActionBar(topToolBar);
         getSupportActionBar().setTitle("Mortgage Calculator");
 
+        principleInput = (TextInputEditText) findViewById(R.id.principleInput);
+        intrestInput = (TextInputEditText) findViewById(R.id.intrestInput);
+        amorInput = (TextInputEditText) findViewById(R.id.amorInput);
+
         spinner = (Spinner) findViewById(R.id.paymentSpinner);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
                 this,
@@ -42,11 +53,21 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
 
+        calcButton = (Button) findViewById(R.id.calcButton);
+        calcButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+
     }
 
     @Override
-    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-        String choice = (String) adapterView.getItemAtPosition(i);
+    public void onItemSelected(AdapterView<?> parent, View view, int pos,long id) {
+        Toast.makeText(parent.getContext(),
+                "OnItemSelectedListener : " + parent.getItemAtPosition(pos).toString(),
+                Toast.LENGTH_SHORT).show();
     }
 
     @Override
